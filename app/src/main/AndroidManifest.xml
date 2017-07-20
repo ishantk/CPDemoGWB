@@ -21,7 +21,9 @@
             android:name=".UserContentProvider"
             android:authorities="com.auribises.cpdemogwb.usercontentprovider"
             android:enabled="true"
-            android:exported="true"></provider>
+            android:exported="true" />
+
+        <activity android:name=".AllUsersActivity"></activity>
     </application>
 
 </manifest>

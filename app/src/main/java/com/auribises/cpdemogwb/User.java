@@ -1,11 +1,13 @@
 package com.auribises.cpdemogwb;
 
+import java.io.Serializable;
+
 /**
  * Created by ishantkumar on 19/07/17.
  */
 
 // Model or Bean or POJO
-public class User {
+public class User implements Serializable{
 
     int id;
 
@@ -74,5 +76,14 @@ public class User {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    @Override
+    public String toString() {
+        return "\nName: "+name+
+                "\n\nEmail: "+email+
+                "\n\nPassword: "+password+
+                "\n\nGender: "+gender+
+                "\n\nCity: "+city;
     }
 }

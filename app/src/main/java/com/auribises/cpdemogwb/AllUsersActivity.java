@@ -7,8 +7,11 @@ import android.database.Cursor;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -21,6 +24,9 @@ public class AllUsersActivity extends AppCompatActivity implements AdapterView.O
 
     @InjectView(R.id.listView)
     ListView listView;
+
+    @InjectView(R.id.editTextSearch)
+    EditText eTxtSearch;
 
     ContentResolver resolver;
 
@@ -73,6 +79,24 @@ public class AllUsersActivity extends AppCompatActivity implements AdapterView.O
             adapter = new UserAdapter(this,R.layout.list_item,userList);
             listView.setAdapter(adapter);
             listView.setOnItemClickListener(this);
+
+
+            eTxtSearch.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                    adapter.filter(charSequence.toString());
+                }
+
+                @Override
+                public void afterTextChanged(Editable editable) {
+
+                }
+            });
         }
 
     }
